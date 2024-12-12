@@ -1,0 +1,517 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+header {
+    background-color: #444343;
+    color: #fff;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out;
+}
+header.compact {
+    padding: 10px 0;
+    transform: translateY(-60px);
+}
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-weight: 400;
+    transition: opacity 0.3s ease-in-out;
+}
+header.compact h1 {
+    opacity: 0;
+    visibility: hidden;
+}
+nav {
+    margin-top: 20px;
+}
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 15px;
+    font-size: 1.1em;
+    padding: 5px 15px;
+    border-radius: 30px;
+    transition: background-color 0.3s, color 0.3s;
+}
+nav a:hover {
+    background-color: #fff;
+    color: #000;
+}
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 200px 20px;
+    width: 100%;
+    gap: 60px;
+}
+section {
+    padding: 60px;
+    margin-bottom: 60px !important;
+    background-color: #f5f5f7;
+    border-radius: 20px;
+    transition: box-shadow 0,2s ease;
+}
+
+section:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #000;
+    font-weight: 500;
+}
+p, ul {
+    font-size: 1.1em;
+    color: #666;
+    text-align: center;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+ul li {
+    padding: 10px 0;
+}
+.socials {
+    text-align: center;
+    margin-top: 30px;
+}
+.socials a {
+    text-decoration: none;
+    color: #000;
+    margin: 0 20px;
+    font-size: 1.7em;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.socials a:hover {
+    color: #4a90e2;
+    transform: scale(1.1);
+}
+footer {
+    text-align: center;
+    padding: 30px 0;
+    background-color: #444343;
+    color: #fff;
+    width: 100%;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+
+/* Bouton du mode sombre */
+#dark-mode-toggle {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    z-index: 1001;
+}
+#dark-mode-toggle:hover {
+    background-color: #357ABD;
+    transform: scale(1.1);
+}
+
+
+/* Mode sombre pour le texte et les arrière-plans */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header.dark-mode, footer.dark-mode {
+    background-color: #1f1f1f;
+    color: #ffffff;
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a.dark-mode {
+    color: #ffffff;
+}
+
+section.dark-mode {
+    background-color: #222;
+    color: #ffffff;
+    box-shadow: none;
+}
+
+#windForm input[type="text"].dark-mode,
+#windForm input[type="email"].dark-mode {
+    background-color: #333;
+    color: #ffffff;
+    border: 1px solid #4a90e2;
+}
+input.dark-mode{
+    color: #333;
+}
+#windForm button.dark-mode {
+    background-color: #357ABD;
+    color: #ffffff;
+}
+strong.dark-mode{
+    color: #ffffff;
+}
+
+.socials a.dark-mode {
+    color: #ffffff;
+}
+
+.socials a.dark-mode:hover {
+    color: #4a90e2;
+}
+
+.progress-bar.dark-mode .progress {
+    background-color: #555;
+    color: #ffffff;
+}
+
+/* Dark mode for all sections */
+h1.dark-mode, h2.dark-mode, p.dark-mode, ul li.dark-mode {
+    color: #ffffff;
+}
+#progress-bar {
+position: fixed;
+top: 0;
+left: 0;
+width: 0%;
+height: 5px;
+background-color: pink;
+z-index: 1001;
+transition: width 0.1s ease;
+}
+#skills {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  #skills h2 {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  #skills p {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .dark-mode #skills p {
+    color: #fff; /* Couleur du texte en mode sombre */
+}
+  #skills ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #skills li {
+    margin: 15px 0;
+    font-weight: bold;
+  }
+  
+  .progress-bar {
+    position: relative;
+    width: 100%;
+    height: 20px; /* Hauteur de la barre */
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.progress {
+    height: 100%;
+    background-color: #4caf50; /* Couleur de la progression */
+    transition: width 0.3s ease-in-out;
+}
+
+.progress.html {
+    width: 75%; /* Largeur correspondant au pourcentage */
+}
+
+.progress-percentage {
+    position: absolute;
+    right: 10px; /* Distance du bord droit */
+    color: #333; /* Couleur du texte */
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px; /* Alignement vertical */
+}
+
+  
+  .html { background-color: rgb(124, 120, 121); width: 75%; } /* Niveau 90% */
+  .css { background-color: rgb(124, 120, 121); width: 80%; }  /* Niveau 80% */
+  .javascript { background-color: rgb(124, 120, 121); width: 60%; } /* Niveau 70% */
+  .other-skill { background-color: rgb(124, 120, 121); width: 90%; } 
+  
+ img{
+    border-radius: 50%;
+  }
+  #contact {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#contact h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#windForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+#windForm input[type="text"],
+#windForm input[type="email"] {
+    flex: 1 1 20%;
+    min-width: 150px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 60px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#windForm input[type="text"]:focus,
+#windForm input[type="email"]:focus {
+    border-color: #4a90e2;
+}
+
+#windForm button {
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 60px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#windForm button:hover {
+    background-color: #357ABD;
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 800px) {
+    #windForm {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #windForm input,
+    #windForm button {
+        width: 100%;
+        max-width: none;
+    }
+}
+strong{
+    color: #333;
+}
+/* Style de la transition de zoom et fondu */
+.fade-zoom {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    transform: scale(1);
+    transition: opacity 1.8s ease, transform 0.8s ease;
+    z-index: 1000;
+}
+
+/* Animation de particules */
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: particle-animation 1.8s ease forwards;
+}
+
+/* Ajouter la classe .active pour déclencher l'animation */
+.fade-zoom.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Animation de particule dispersée */
+@keyframes particle-animation {
+    0% {
+        transform: translate(0, 0) scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(calc(-50px + 100px * var(--x)), calc(-50px + 100px * var(--y))) scale(1);
+        opacity: 0;
+    }
+}
+/* Style général du bouton */
+.back-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+.back-button .button-text {
+    display: none; /* Cacher le texte par défaut */
+    margin-left: 10px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+}
+
+/* Icône de flèche */
+.back-button i {
+    transition: opacity 0.3s ease;
+}
+
+/* Lorsque le bouton est survolé, agrandir et afficher le texte */
+.back-button:hover {
+    background-color: #333;
+    width: auto; /* Ajuster la taille */
+    padding: 10px 20px; /* Ajoute de l'espace pour le texte */
+    border-radius: 25px; /* Pour avoir des coins arrondis */
+}
+
+.back-button:hover .button-text {
+    display: inline;
+    opacity: 1;
+}
+
+.back-button:hover i {
+    opacity: 0; /* Masquer l'icône */
+}
+a {
+    color: inherit; /* Maintient la couleur du texte existant */
+    text-decoration: underline; /* Empêche la ligne sous le texte */
+}
+
+a:hover {
+    color: inherit; /* Garde la même couleur au survol */
+    text-decoration: underline; /* Enlève la décoration sous le texte */
+}
+/* Animation fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#contact {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+#contact.visible {
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}
+
+
+
+/* Styles pour mobile */
+@media (max-width: 768px) {
+    header {
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Cacher la navigation complète et la photo */
+    header nav {
+        display: none;
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        right: -50px;
+        width: 80%;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    header nav.active {
+        display: flex;
+    }
+
+    header nav a {
+        padding: 10px;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Afficher le bouton burger */
+    #menu-toggle {
+        display: block;
+    }
+}
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 30px;
+    align-items: right;
+  }
+  button:hover {
+    background-color: #2874a6;
+  }

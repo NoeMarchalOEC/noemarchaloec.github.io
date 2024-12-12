@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <!-- Import de Bootstrap pour les styles -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Encodage du document -->
+    <meta charset="UTF-8">
+    <!-- Rendu adaptatif pour les appareils mobiles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lien vers le fichier de styles personnalisés -->
+    <link href="styles.css" rel="stylesheet">
+    <link href="responsive.css" rel="stylesheet">
+    <title>Noé Marchal</title>
+</head>
+
+<body>
+
+    <!-- Section du header contenant le titre et la navigation -->
+    <header>
+        <h1>Noé Marchal</h1>
+        <nav>
+            <!-- Image cliquable redirigeant vers un lien externe -->
+            <a href="https://ibb.co/P1Y2tff">
+                <img src="https://i.ibb.co/mhBnSMM/IMG-5170.jpg" alt="IMG-5170" width="60">
+            </a>
+            <!-- Liens de navigation vers les différentes sections -->
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#projects">Projets</a>
+            <a href="#socials">Réseaux sociaux</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Bouton pour basculer en mode sombre -->
+    <button id="dark-mode-toggle">Mode Sombre</button>
+
+    <!-- Contenu principal -->
+    <main>
+        <!-- Section "À propos de moi" -->
+        <section id="about">
+            <h2>À propos de moi</h2>
+            <p>
+                Je suis passionné par les sports nautiques et l'informatique.</br>
+                Une de mes citations favorites est "On n'a rien sans rien.".
+            </p>
+        </section>
+
+        <!-- Section des compétences -->
+        <section id="skills">
+            <h2>Compétences</h2>
+            <p>Voici quelques compétences que je maîtrise :</p>
+            <ul>
+                <li>HTML, CSS, JS
+                    <!-- Barre de progression -->
+                    <div class="progress-bar">
+                        <div class="progress html"></div>
+                        <span class="progress-percentage">75%</span>
+                    </div>
+                </li>
+                <li>Autonomie
+                    <div class="progress-bar">
+                        <div class="progress css"></div>
+                        <span class="progress-percentage">80%</span>
+                    </div>
+                </li>
+                <li>Anglais
+                    <div class="progress-bar">
+                        <div class="progress javascript"></div>
+                        <span class="progress-percentage">60%</span>
+                    </div>
+                </li>
+                <li>Joie de vivre
+                    <div class="progress-bar">
+                        <div class="progress other-skill"></div>
+                        <span class="progress-percentage">90%</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section des projets -->
+        <section id="projects">
+            <h2>Projets</h2>
+            <p>Découvrez quelques projets sur lesquels j'ai travaillé :</p>
+            <ul>
+                <li><a href="P1.html"><strong>Serveur cloud :</strong></a></li>
+                <li><a href="P2.html"><strong>Tag NFC :</strong></a></li>
+                <li><a href="P3.html"><strong>Projet 3 :</strong></a></li>
+            </ul>
+        </section>
+
+        <!-- Section des réseaux sociaux et école -->
+        <section id="socials">
+            <h2>Mes réseaux sociaux & école</h2>
+            <div class="socials">
+                <a href="https://fr.linkedin.com/in/no%C3%A9-marchal-21221a27b" target="_blank">LinkedIn</a>
+                <a href="https://www.instagram.com/noe__marchal" target="_blank">Instagram</a>
+                <a href="https://www.groupe-oec.fr/" target="_blank">Ozanam</a>
+            </div>
+        </section>
+
+        <!-- Section de contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <form id="windForm" onsubmit="sendEmail(); reset(); return false;">
+                <input id="name" type="text" placeholder="Nom" required><br>
+				<br>
+                <input id="firstname" type="text" placeholder="Prénom" required><br>
+				<br>
+				<input id="Email" type="email" placeholder="Email" required><br>
+				<br>
+                <input id="phone" type="text" placeholder="N°" required><br>
+				<br>
+                <input id="message" type="text" placeholder="Votre message"></input><br>
+				<br>
+                <button type="submit">Sent</button>
+            </form>
+            <script src="https://smtpjs.com/v3/smtp.js"></script>
+        </section>
+
+         <!-- Bouton pour télécharger le CV -->
+        <a href="CV.pdf" download="CV.pdf">
+          <button>Télécharger mon CV</button>
+        </a>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2024 Noé Marchal. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Ajout de la classe compacte au header lors du défilement
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('compact');
+            } else {
+                header.classList.remove('compact');
+            }
+        });
+    </script>
+
+    <div id="progress-bar"></div>
+
+    <script>
+        // Mise à jour de la barre de progression en fonction du défilement
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (scrollTop / docHeight) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        });
+    </script>
+
+    <script>
+        // Basculer entre les modes clair et sombre
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('header').classList.toggle('dark-mode');
+            document.querySelector('footer').classList.toggle('dark-mode');
+            document.querySelectorAll('nav a, section, h1, h2, p, ul li, #windForm input, #windForm button, .socials a, strong, input').forEach(el => {
+                el.classList.toggle('dark-mode');
+            });
+
+            // Changer le texte du bouton
+            toggleButton.textContent = document.body.classList.contains('dark-mode') ? 'Mode Clair' : 'Mode Sombre';
+        });
+    </script>
+
+<script>
+    function sendEmail() {
+        const body = "Nom : " + document.getElementById("name").value + "<br>" +
+        "Prénom : " + document.getElementById("firstname").value + "<br>" +
+        "Email : " + document.getElementById("Email").value + "<br>" +
+        "Téléphone : " + document.getElementById("phone").value + "<br>" +
+        "Message : " + document.getElementById("message").value;
+    Email.send({
+    Host: "smtp.elasticemail.com",
+    Username: "noemarchal59@gmail.com",
+    Password: "2AC956234C4B607C6D18473E30B646787F3E",
+    To: "noemarchal59@gmail.com",
+    From: "noemarchal59@gmail.com",
+    Subject: "Contact pro Noe",
+    Body: body,
+}).then(
+    message => alert(message)
+);
+}
+</script>
+
+    <script>
+        // Ajout d'une animation de défilement douce pour les ancres
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    const offsetPosition = targetElement.offsetTop - header.offsetHeight;
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+
+    <script>
+        // Animation pour la transition de page lors du clic sur un projet
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectLinks = document.querySelectorAll('a[href$=".html"]');
+            projectLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const fadeZoomOverlay = document.createElement('div');
+                    fadeZoomOverlay.classList.add('fade-zoom');
+                    document.body.appendChild(fadeZoomOverlay);
+
+                    for (let i = 0; i < 100; i++) {
+                        const particle = document.createElement('div');
+                        particle.classList.add('particle');
+                        particle.style.left = `${Math.random() * 100}vw`;
+                        particle.style.top = `${Math.random() * 100}vh`;
+                        particle.style.setProperty('--x', Math.random() - 0.5);
+                        particle.style.setProperty('--y', Math.random() - 0.5);
+                        fadeZoomOverlay.appendChild(particle);
+                    }
+
+                    setTimeout(() => fadeZoomOverlay.classList.add('active'), 10);
+                    setTimeout(() => window.location.href = link.href, 800);
+                });
+            });
+        });
+    </script>
+    <script>
+        // Ajout de validation en temps réel
+document.querySelectorAll('#windForm input[type="text"], #windForm input[type="email"]').forEach(input => {
+    input.addEventListener('input', () => {
+        if (input.checkValidity()) {
+            input.style.borderColor = "#28a745"; // Vert pour valide
+        } else {
+            input.style.borderColor = "#dc3545"; // Rouge pour invalide
+        }
+    });
+});
+    </script>
+    <script>
+        // Observer pour déclencher l'apparition au défilement
+const contactSection = document.getElementById('contact');
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            contactSection.classList.add('visible');
+        }
+    });
+}, { threshold: 0.5 });
+
+observer.observe(contactSection);
+
+    </script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+    
+        // Ouvrir/Fermer le menu
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    
+        // Fermer le menu après avoir cliqué sur un lien
+        navMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+    
+    
+</body>
+
+</html>
