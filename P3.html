@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Ajouter Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet">
+    <title>Projet 3 - Noé Marchal</title>
+</head>
+<body>
+
+<header>
+    <h1>Noé Marchal</h1>
+</header>
+
+<!-- Bouton pour basculer en mode sombre -->
+<button id="dark-mode-toggle">Mode Sombre</button>
+
+<main>
+    <section id="projects">
+        <h2>Projet 3 : Application de gestion des tâches</h2>
+        <p>Voici une présentation de l'un de mes projets les plus récents : une application web de gestion des tâches.</p>
+        <p><strong>Description du projet :</strong> Cette application permet de créer, modifier et supprimer des tâches avec une interface utilisateur simple et intuitive. L'objectif est de rendre la gestion des tâches plus facile et efficace pour les utilisateurs.</p>
+        
+        <h3>Technologies utilisées :</h3>
+        <ul>
+            <li>HTML/CSS : Pour la structure et le style de l'application.</li>
+            <li>JavaScript : Pour la gestion dynamique des tâches.</li>
+            <li>Node.js : Backend pour la gestion des données en temps réel.</li>
+        </ul>
+
+        <h3>Fonctionnalités principales :</h3>
+        <ul>
+            <li>Création de tâches avec titre, description et date d'échéance.</li>
+            <li>Modification des tâches existantes.</li>
+            <li>Suppression des tâches.</li>
+            <li>Interface réactive et adaptée aux mobiles.</li>
+        </ul>
+
+        <h3>Capture d'écran de l'application :</h3>
+        <img src="https://via.placeholder.com/600x400" alt="Capture d'écran de l'application" style="width: 100%; max-width: 600px; border-radius: 10px;">
+
+        <h3>Lien vers le code source :</h3>
+        <p>Le code source est disponible sur <a href="https://github.com/NoeMarchal/todolist" target="_blank">GitHub</a>.</p>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2024 Noé Marchal. Tous droits réservés.</p>
+</footer>
+
+<!-- Bouton retour -->
+<a href="noe_prez.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> <!-- Icône de flèche -->
+    <span class="button-text">Retour à la page principale</span>
+</a>
+
+<script>
+    // Script pour gérer la transformation du header lors du défilement
+    const header = document.querySelector('header');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('compact');
+        } else {
+            header.classList.remove('compact');
+        }
+    });
+</script>
+
+<script>
+    // Script pour basculer entre le mode clair et le mode sombre
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        document.querySelector('header').classList.toggle('dark-mode');
+        document.querySelector('footer').classList.toggle('dark-mode');
+        document.querySelectorAll('h1, h2, p, ul li').forEach(el => el.classList.toggle('dark-mode'));
+        document.querySelectorAll('nav a').forEach(link => link.classList.toggle('dark-mode'));
+        document.querySelectorAll('section').forEach(section => section.classList.toggle('dark-mode'));
+        document.querySelectorAll('.socials a').forEach(link => link.classList.toggle('dark-mode'));
+        document.querySelectorAll('strong').forEach(link => link.classList.toggle('dark-mode'));
+
+        // Change le texte du bouton en fonction du mode activé
+        if (document.body.classList.contains('dark-mode')) {
+            toggleButton.textContent = 'Mode Clair';  // Quand le mode sombre est activé
+        } else {
+            toggleButton.textContent = 'Mode Sombre';  // Quand le mode clair est activé
+        }
+    });
+</script>
+<div id="progress-bar"></div>
+
+<script>
+    // Mise à jour de la barre de progression en fonction du défilement
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        document.getElementById('progress-bar').style.width = progress + '%';
+    });
+</script>
+<script>
+    // Ajout d'une animation de défilement douce pour les ancres
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const offsetPosition = targetElement.offsetTop - header.offsetHeight;
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+</script>
+
+<script>
+    // Animation pour la transition de page lors du clic sur un projet
+    document.addEventListener('DOMContentLoaded', () => {
+        const projectLinks = document.querySelectorAll('a[href$=".html"]');
+        projectLinks.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const fadeZoomOverlay = document.createElement('div');
+                fadeZoomOverlay.classList.add('fade-zoom');
+                document.body.appendChild(fadeZoomOverlay);
+
+                for (let i = 0; i < 100; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+                    particle.style.left = `${Math.random() * 100}vw`;
+                    particle.style.top = `${Math.random() * 100}vh`;
+                    particle.style.setProperty('--x', Math.random() - 0.5);
+                    particle.style.setProperty('--y', Math.random() - 0.5);
+                    fadeZoomOverlay.appendChild(particle);
+                }
+
+                setTimeout(() => fadeZoomOverlay.classList.add('active'), 10);
+                setTimeout(() => window.location.href = link.href, 800);
+            });
+        });
+    });
+</script>
+</body>
+</html>
